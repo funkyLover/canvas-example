@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = $("#myCanvas").get(0).getContext("2d");
+            $(window).resize(resizeCanvas);
+            function resizeCanvas(){
+                canvas.attr("width",$(window).get(0).innerWidth);
+                canvas.attr("height",$(window).get(0).innerHeight);
+                context.fillRect(0,0,canvas.width(),canvas.height());
+            }
+            resizeCanvas();
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="350">
+
+</canvas>
+
+</body>
+</html>

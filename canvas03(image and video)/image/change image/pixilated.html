@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var image = new Image();
+            image.src = "../../../img/p1.jpg";
+            $(image).load(function(){
+                context.drawImage(image,0,0,400,330,0,0,500,500);
+                var imageData = context.getImageData(0,0,canvas.width(),canvas.height());
+                var pixels = imageData.data;
+                context.clearRect(0,0,canvas.width(),canvas.height());
+                var numTileRows = 50;
+                var numTileCols = 50;
+                var tileWidth = imageData.width/numTileCols;
+                var tileHeight = imageData.height/numTileRows;
+                var x;
+                var y;
+                var pos;
+                var red;
+                var green;
+                var blue;
+                for(var r=0;r<numTileRows;r++){
+                    for(var c=0;c<numTileCols;c++){
+                        x = (c * tileWidth) + (tileWidth/2);
+                        y = (r * tileHeight) + (tileHeight/2);
+                        pos = (Math.floor(y) * (imageData.width*4)) + (Math.floor(x) * 4);
+                        red = pixels[pos];
+                        green = pixels[pos+1];
+                        blue = pixels[pos+2];
+
+                        context.fillStyle = "rgb(" + red + "," + green + "," + blue + ")";
+                         /*context.fillRect(x-(tileWidth/2),y-(tileHeight/2),tileWidth,tileHeight);*/
+                        context.beginPath();
+                        context.arc(x,y,tileWidth/2,0,Math.PI*2,false);
+                        context.closePath();
+                        context.fill();
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500">
+</canvas>
+</body>
+</html>

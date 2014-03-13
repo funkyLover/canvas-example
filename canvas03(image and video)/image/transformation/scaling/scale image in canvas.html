@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var image = new Image();
+            image.src = "../../../../img/p1.jpg";
+            $(image).load(function(){
+                context.translate(50,50);
+                context.drawImage(image,0,0,300,300,0,0,200,200);
+
+                context.setTransform(1,0,0,1,0,0);
+                context.translate(50,450);
+                context.scale(1,-1);
+                context.drawImage(image,0,0,300,300,0,0,200,200);
+
+                context.setTransform(1,0,0,1,0,0);
+                context.translate(450,450);
+                context.scale(-1,-1);
+                context.drawImage(image,0,0,300,300,0,0,200,200);
+
+                context.setTransform(1,0,0,1,0,0);
+                context.translate(450,50);
+                context.scale(-1,1);
+                context.drawImage(image,0,0,300,300,0,0,200,200);
+                });
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="600">
+</canvas>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var image = new Image();
+            image.src = "../../../img/p1.jpg";
+            $(image).load(function(){
+                context.drawImage(image,0,0,300,300,0,0,500,500);
+                var imageData = context.getImageData(0,0,canvas.width(),canvas.height());
+                var pixels = imageData.data;
+                var numPixels = pixels.length;
+
+                context.clearRect(0,0,canvas.width(),canvas.height());
+                for(var i=0;i<numPixels;i++){
+                    pixels[i*4] = 255 - pixels[i*4];
+                    pixels[i*4+1] = 255 - pixels[i*4+1];
+                    pixels[i*4+2] = 255 - pixels[i*4+2];
+                }
+                context.putImageData(imageData,0,0);
+            });
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500">
+</canvas>
+</body>
+</html>

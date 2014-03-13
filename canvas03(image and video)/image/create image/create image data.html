@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var imageData = context.createImageData(200,200);
+            var pixel = imageData.data;
+            var numPixels = imageData.width * imageData.height;
+            for(var i=0;i<numPixels;i++){
+                pixel[i*4] = Math.floor(Math.random()*255);
+                pixel[i*4 + 1] = Math.floor(Math.random()*255);
+                pixel[i*4 + 2] = Math.floor(Math.random()*255);
+                pixel[i*4 + 3] = 255;
+            }
+            context.putImageData(imageData,0,0);
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400">
+</canvas>
+</body>
+</html>

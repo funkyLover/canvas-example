@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var canvasWidth = canvas.width();
+            var canvasHeight = canvas.height();
+            var playAnimation = true;
+            var startButton = $("#startAnimation");
+            var stopButton = $("#stopAnimation");
+
+            startButton.hide();
+            startButton.click(function(){
+                $(this).hide();
+                stopButton.show();
+                playAnimation = true;
+                animate();
+            });
+            stopButton.click(function(){
+                $(this).hide();
+                startButton.show();
+                playAnimation = false;
+            });
+            var Shape = function(x,y,width,height){
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+            };
+            var shapes = new Array();
+            var x;
+            var y;
+            var width;
+            var height;
+            for(var i=0;i<10;i++){
+                x = Math.random()*250;
+                y = Math.random()*250;
+                width = height = Math.random()*50;
+                shapes.push(new Shape(x,y,width,height));
+            }
+
+            function animate(){
+                context.clearRect(0,0,canvasWidth,canvasHeight);
+                var tmpShape = null;
+                var shapeLength = shapes.length;
+                for(var i=0;i<shapeLength;i++){
+                    tmpShape = shapes[i];
+                    tmpShape.x++;
+                    context.fillRect(tmpShape.x,tmpShape.y,tmpShape.width,tmpShape.height);
+                }
+                if(playAnimation){
+                    setTimeout(animate,33);
+                }
+            }
+            animate();
+        });
+
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400">
+</canvas>
+<div>
+    <button id="startAnimation">Start</button>
+    <button id="stopAnimation">Stop</button>
+</div>
+
+</body>
+</html>

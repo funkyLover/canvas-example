@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            context.beginPath();
+            context.moveTo(100,50);
+            context.lineTo(150,150);
+            context.lineTo(50,150);
+            context.closePath();
+            context.stroke();
+            context.fill();
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="300" height="300">
+
+</canvas>
+
+</body>
+</html>

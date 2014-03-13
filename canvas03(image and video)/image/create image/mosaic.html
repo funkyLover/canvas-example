@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var imageData = context.createImageData(400,400);
+            var pixel = imageData.data;
+            var numTitleRows = 100;
+            var numTitleCols = 100;
+            var tileWidth = imageData.width/numTitleCols;
+            var tileHeight = imageData.height/numTitleRows;
+            var red;
+            var green;
+            var blue;
+            var trueX;
+            var trueY;
+            var pos;
+
+            for(var r=0;r<numTitleRows;r++){
+                for(var c=0;c<numTitleCols;c++){
+                    red = Math.floor(Math.random()*255);
+                    green = Math.floor(Math.random()*255);
+                    blue = Math.floor(Math.random()*255);
+                    for(var tr=0;tr<tileHeight;tr++){
+                        for(var tc=0;tc<tileWidth;tc++){
+                            trueX = (c * tileWidth) + tc;
+                            trueY = (r * tileHeight) + tr;
+                            pos = (trueY * (imageData.width*4)) + (trueX*4);
+                            pixel[pos] = red;
+                            pixel[pos+1] = green;
+                            pixel[pos+2] = blue;
+                            pixel[pos+3] = 255;
+                        }
+                    }
+                }
+            }
+
+            context.putImageData(imageData,0,0);
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400">
+</canvas>
+</body>
+</html>

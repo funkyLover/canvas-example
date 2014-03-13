@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var image = new Image();
+            image.src = "../../../../img/p1.jpg";
+            $(image).load(function(){
+                context.drawImage(image,0,0,300,150,0,0,400,400);
+            });
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400">
+</canvas>
+</body>
+</html>

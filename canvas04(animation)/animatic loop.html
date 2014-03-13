@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var canvasWidth = canvas.width();
+            var canvasHeight = canvas.height();
+            var playAnimation = true;
+            var startButton = $("#startAnimation");
+            var stopButton = $("#stopAnimation");
+            var x = 0;
+            animate();
+            startButton.hide();
+            startButton.click(function(){
+                $(this).hide();
+                stopButton.show();
+                playAnimation = true;
+                animate();
+            });
+            stopButton.click(function(){
+                $(this).hide();
+                startButton.show();
+                playAnimation = false;
+            });
+            function animate(){
+                if(playAnimation){
+                    x++;
+                    context.clearRect(0,0,canvasWidth,canvasHeight);
+                    context.fillRect(x,250,10,10);
+                    setTimeout(animate,33);
+                }
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400">
+    </canvas>
+    <div>
+        <button id="startAnimation">Start</button>
+        <button id="stopAnimation">Stop</button>
+    </div>
+
+</body>
+</html>

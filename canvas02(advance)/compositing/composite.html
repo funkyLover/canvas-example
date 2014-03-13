@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            context.fillStyle = "rgb(63,169,240)";
+            context.fillRect(50,50,100,100);
+            context.globalCompositeOperation = "source-over";
+            //context.globalCompositeOperation = "destination-over";
+            //context.globalCompositeOperation = "source-atop";
+            //context.globalCompositeOperation = "destination-atop";
+            //context.globalCompositeOperation = "source-in";
+            //context.globalCompositeOperation = "destination-in";
+            //context.globalCompositeOperation = "source-out";
+            //context.globalCompositeOperation = "destination-out";
+            //context.globalCompositeOperation = "lighter";
+            //context.globalCompositeOperation = "copy";
+            //context.globalCompositeOperation = "xor";
+            /*context.globalAlpha = 0.5;*/
+            context.fillStyle = "rgb(255,123,172)";
+            context.fillRect(100,100,100,100);
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="600">
+</canvas>
+</body>
+</html>

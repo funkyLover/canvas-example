@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var image = new Image();
+            image.src = "../../../img/p1.jpg";
+            $(image).load(function(){
+                context.drawImage(image,0,0);
+            });
+            canvas.click(function(e){
+                var canvasOffset = canvas.offset();
+                var canvasX = Math.floor(e.pageX - canvasOffset.left);
+                var canvasY = Math.floor(e.pageY - canvasOffset.top);
+                var imageData = context.getImageData(canvasX,canvasY,1,1);
+                var pixel = imageData.data;
+                var pixelColor = "rgb(" + pixel[0] + "," + pixel[1] + "," + pixel[2] + ")";
+                $("body").css("background-color",pixelColor);
+            });
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400">
+</canvas>
+</body>
+</html>

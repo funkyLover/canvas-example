@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            context.fillRect(50,50,100,100);
+            context.translate(150,150);
+            context.fillStyle = "rgb(255,0,0)";
+            context.fillRect(50,50,100,100);
+
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500">
+
+</canvas>
+</body>
+</html>

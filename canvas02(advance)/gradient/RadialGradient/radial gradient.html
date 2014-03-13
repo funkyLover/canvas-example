@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../../../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var canvas = $("#myCanvas");
+            var context = canvas.get(0).getContext("2d");
+            var canvasCenterX = canvas.width()/2;
+            var canvasCenterY = canvas.height()/2;
+            var gradient = context.createRadialGradient(canvasCenterX,canvasCenterY,0,canvasCenterX,canvasCenterY,250);
+            gradient.addColorStop(0,"rgb(0,0,0)");
+            gradient.addColorStop(1,"rgb(255,255,255)");
+            context.fillStyle = gradient;
+            context.fillRect(0,0,canvas.width(),canvas.height());
+        });
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400">
+</canvas>
+</body>
+</html>
