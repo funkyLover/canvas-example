@@ -1,1 +1,5 @@
-just some example to help me student canvas
+一些canvas的基础
+其中一些对象图像进行像素级别的操作需要先
+  node app.js
+因为操作的图像和控制canvas的javascript不在同一位置
+那么canvas对于访问这个图像的像素级数据会有严格限制
